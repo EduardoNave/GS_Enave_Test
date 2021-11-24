@@ -1,0 +1,47 @@
+﻿@model GS_Enave_Test.Models.mxg_materiasxgrado
+
+@{
+    ViewData["Title"] = "Editar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="container">
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h3>Edición de materia por grado</h3>
+        <a class="d-none d-sm-inline-block btn btn-sm btn-secondary shadow-sm" asp-action="Index">Regresar a la lista</a>
+    </div>
+    <div class="container-fluid">
+        <div class="card shadow mb-4">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <form asp-action="Edit">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <input type="hidden" asp-for="mxg_id" />
+                            <div class="form-group">
+                                <label asp-for="mxg_id_grd" class="control-label"></label>
+                                <input asp-for="mxg_id_grd" class="form-control" />
+                                <span asp-validation-for="mxg_id_grd" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="mxg_id_mat" class="control-label"></label>
+                                <input asp-for="mxg_id_mat" class="form-control" />
+                                <span asp-validation-for="mxg_id_mat" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <input type="submit" value="Guardar" class="btn btn-primary" />
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+}

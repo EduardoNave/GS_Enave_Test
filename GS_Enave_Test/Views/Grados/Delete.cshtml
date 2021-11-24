@@ -1,0 +1,39 @@
+﻿@model GS_Enave_Test.Models.grd_grado
+
+@{
+    ViewData["Title"] = "Eliminar información del grado";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h3>Eliminar grado</h3>
+        <a class="d-none d-sm-inline-block btn btn-sm btn-secondary shadow-sm" asp-action="Index">Regresar a la lista</a>
+    </div>
+    <div class="container-fluid">
+        <div class="card shadow mb-4">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-4">
+                        <form method="post" asp-action="DeleteGrado">
+                            <input type="hidden" asp-for="grd_id" />
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <div class="form-group">
+                                <label asp-for="grd_nombre" class="control-label"></label>
+                                <input asp-for="grd_nombre" class="form-control" readonly/>
+                                <span asp-validation-for="grd_nombre" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <input type="submit" value="Eliminar" class="btn btn-primary" />
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{ 
+    @{ <partial name="_ValidationScriptsPartial" />}
+}
