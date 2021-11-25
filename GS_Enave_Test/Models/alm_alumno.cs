@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -33,7 +34,6 @@ namespace GS_Enave_Test.Models
         public string alm_sexo { get; set; }
 
         [Required(ErrorMessage = "Indicar el grado al que pertenece")]
-        [ForeignKey("alm_id_grd")]
         [Display(Name = "Grado")]
         public int alm_id_grd { get; set; }
 

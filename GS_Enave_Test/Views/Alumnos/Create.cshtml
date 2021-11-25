@@ -1,4 +1,4 @@
-﻿@model GS_Enave_Test.Models.alm_alumno
+﻿@model GS_Enave_Test.Models.ListadoAlumno
 
 @{
     ViewData["Title"] = "Nuevo Alumno";
@@ -13,46 +13,79 @@
     <div class="container-fluid">
         <div class="card shadow mb-4">
             <div class="card-body">
-                <div class="row">
-                    <div class="col-md-6">
-                        <form asp-action="Create">
+                <form asp-action="Create">
+                    <div class="form-group row">
+                        <div class="col-md-12">
                             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-4">
                             <div class="form-group">
-                                <label asp-for="alm_codigo" class="control-label"></label>
-                                <input asp-for="alm_codigo" class="form-control" />
-                                <span asp-validation-for="alm_codigo" class="text-danger"></span>
+                                <label asp-for="Alumno.alm_codigo" class="control-label"></label>
+                                <input asp-for="Alumno.alm_codigo" class="form-control" />
+                                <span asp-validation-for="Alumno.alm_codigo" class="text-danger"></span>
                             </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-6">
                             <div class="form-group">
-                                <label asp-for="alm_nombre" class="control-label"></label>
-                                <input asp-for="alm_nombre" class="form-control" />
-                                <span asp-validation-for="alm_nombre" class="text-danger"></span>
+                                <label asp-for="Alumno.alm_nombre" class="control-label"></label>
+                                <input asp-for="Alumno.alm_nombre" class="form-control" />
+                                <span asp-validation-for="Alumno.alm_nombre" class="text-danger"></span>
                             </div>
+                        </div>
+                        <div class="col-md-3">
                             <div class="form-group">
-                                <label asp-for="alm_edad" class="control-label"></label>
-                                <input asp-for="alm_edad" class="form-control" />
-                                <span asp-validation-for="alm_edad" class="text-danger"></span>
+                                <label asp-for="Alumno.alm_edad" class="control-label"></label>
+                                <input asp-for="Alumno.alm_edad" class="form-control" min="0" max="100"/>
+                                <span asp-validation-for="Alumno.alm_edad" class="text-danger"></span>
                             </div>
+                        </div>
+                        <div class="col-md-3">
                             <div class="form-group">
-                                <label asp-for="alm_sexo" class="control-label"></label>
-                                <input asp-for="alm_sexo" class="form-control" />
-                                <span asp-validation-for="alm_sexo" class="text-danger"></span>
+                                <label asp-for="Alumno.alm_sexo" class="control-label"></label>
+                                <select asp-for="Alumno.alm_sexo" class="form-control">
+                                    <option value=""></option>
+                                    <option value="Femenino">Femenino</option>
+                                    <option value="Masculino">Masculino</option>
+                                    <option value="Prefiero no responder">Prefiero no responder</option>
+                                </select>
+                                <span asp-validation-for="Alumno.alm_sexo" class="text-danger"></span>
                             </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-6">
                             <div class="form-group">
-                                <label asp-for="alm_id_grd" class="control-label"></label>
-                                <input asp-for="alm_id_grd" class="form-control" />
-                                <span asp-validation-for="alm_id_grd" class="text-danger"></span>
+                                <label asp-for="Alumno.alm_id_grd" class="control-label"></label>
+                                <select asp-for="Alumno.alm_id_grd" class="form-control">
+                                    <option value=""></option>
+                                    @foreach (var grado in (IEnumerable<GS_Enave_Test.Models.grd_grado>)ViewBag.ListaGrados)
+                                    {
+                                        <option value="@grado.grd_id">@grado.grd_nombre</option>
+                                    }
+                                </select>
+                                <span asp-validation-for="Alumno.alm_id_grd" class="text-danger"></span>
                             </div>
+                        </div>
+                        <div class="col-md-6">
                             <div class="form-group">
-                                <label asp-for="alm_observacion" class="control-label"></label>
-                                <input asp-for="alm_observacion" class="form-control" />
-                                <span asp-validation-for="alm_observacion" class="text-danger"></span>
+                                <label asp-for="Alumno.alm_observacion" class="control-label"></label>
+                                <input asp-for="Alumno.alm_observacion" class="form-control" />
+                                <span asp-validation-for="Alumno.alm_observacion" class="text-danger"></span>
                             </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-4">
                             <div class="form-group">
                                 <input type="submit" value="Crear nuevo" class="btn btn-primary" />
                             </div>
-                        </form>
+                        </div>
                     </div>
-                </div>
+                </form>
             </div>
         </div>
     </div>

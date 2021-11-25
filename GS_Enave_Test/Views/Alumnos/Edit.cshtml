@@ -1,4 +1,4 @@
-﻿@model GS_Enave_Test.Models.alm_alumno
+﻿@model GS_Enave_Test.Models.ListadoAlumno
 
 @{
     ViewData["Title"] = "Editar alumno";
@@ -7,53 +7,87 @@
 
 <div class="container">
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h3>Edición de alumno</h3>
+        <h3>Editar información del alumno</h3>
         <a class="d-none d-sm-inline-block btn btn-sm btn-secondary shadow-sm" asp-action="Index">Regresar a la lista</a>
     </div>
     <div class="container-fluid">
         <div class="card shadow mb-4">
             <div class="card-body">
-                <div class="row">
-                    <div class="col-md-6">
-                        <form asp-action="Edit">
+                <form asp-action="Edit">
+                    <input type="hidden" asp-for="Alumno.alm_id" />
+                    <div class="form-group row">
+                        <div class="col-md-12">
                             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                            <input type="hidden" asp-for="alm_id" />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-4">
                             <div class="form-group">
-                                <label asp-for="alm_codigo" class="control-label"></label>
-                                <input asp-for="alm_codigo" class="form-control" />
-                                <span asp-validation-for="alm_codigo" class="text-danger"></span>
+                                <label asp-for="Alumno.alm_codigo" class="control-label"></label>
+                                <input asp-for="Alumno.alm_codigo" class="form-control" />
+                                <span asp-validation-for="Alumno.alm_codigo" class="text-danger"></span>
                             </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-6">
                             <div class="form-group">
-                                <label asp-for="alm_nombre" class="control-label"></label>
-                                <input asp-for="alm_nombre" class="form-control" />
-                                <span asp-validation-for="alm_nombre" class="text-danger"></span>
+                                <label asp-for="Alumno.alm_nombre" class="control-label"></label>
+                                <input asp-for="Alumno.alm_nombre" class="form-control" />
+                                <span asp-validation-for="Alumno.alm_nombre" class="text-danger"></span>
                             </div>
+                        </div>
+                        <div class="col-md-3">
                             <div class="form-group">
-                                <label asp-for="alm_edad" class="control-label"></label>
-                                <input asp-for="alm_edad" class="form-control" />
-                                <span asp-validation-for="alm_edad" class="text-danger"></span>
+                                <label asp-for="Alumno.alm_edad" class="control-label"></label>
+                                <input asp-for="Alumno.alm_edad" class="form-control" min="0" max="100" />
+                                <span asp-validation-for="Alumno.alm_edad" class="text-danger"></span>
                             </div>
+                        </div>
+                        <div class="col-md-3">
                             <div class="form-group">
-                                <label asp-for="alm_sexo" class="control-label"></label>
-                                <input asp-for="alm_sexo" class="form-control" />
-                                <span asp-validation-for="alm_sexo" class="text-danger"></span>
+                                <label asp-for="Alumno.alm_sexo" class="control-label"></label>
+                                <select asp-for="Alumno.alm_sexo" class="form-control">
+                                    <option value=""></option>
+                                    <option value="Femenino">Femenino</option>
+                                    <option value="Masculino">Masculino</option>
+                                    <option value="Prefiero no responder">Prefiero no responder</option>
+                                </select>
+                                <span asp-validation-for="Alumno.alm_sexo" class="text-danger"></span>
                             </div>
-                            <div class="form-group">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+
+                        @*<div class="form-group">
                                 <label asp-for="alm_id_grd" class="control-label"></label>
                                 <input asp-for="alm_id_grd" class="form-control" />
                                 <span asp-validation-for="alm_id_grd" class="text-danger"></span>
-                            </div>
+                            </div>*@
+                        <div class="col-md-6">
                             <div class="form-group">
-                                <label asp-for="alm_observacion" class="control-label"></label>
-                                <input asp-for="alm_observacion" class="form-control" />
-                                <span asp-validation-for="alm_observacion" class="text-danger"></span>
+                                <label asp-for="Alumno.alm_id_grd" class="control-label"></label>
+                                @*@Html.DropDownListFor(a => a.GradoSeleccionado, Model.ListaDeGrados, "Indica el grado en curso", new { @class = "form-control" })*@
+                                <select asp-for="Alumno.alm_id_grd" class="form-control" asp-items="@Model.ListaDeGrados"></select>
+                                <span asp-validation-for="Alumno.alm_id_grd" class="text-danger"></span>
                             </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="Alumno.alm_observacion" class="control-label"></label>
+                                <input asp-for="Alumno.alm_observacion" class="form-control" />
+                                <span asp-validation-for="Alumno.alm_observacion" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-4">
                             <div class="form-group">
                                 <input type="submit" value="Guardar" class="btn btn-primary" />
                             </div>
-                        </form>
+                        </div>
                     </div>
-                </div>
+                </form>
             </div>
         </div>
     </div>

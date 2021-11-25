@@ -1,7 +1,7 @@
-﻿@model IEnumerable<GS_Enave_Test.Models.alm_alumno>
+﻿@model IEnumerable<GS_Enave_Test.Models.ListadoAlumno>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Lista de alumnos";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -33,22 +33,22 @@
                             <thead>
                                 <tr>
                                     <th>
-                                        @Html.DisplayNameFor(model => model.alm_codigo)
+                                        @Html.DisplayNameFor(model => model.Alumno.alm_codigo)
                                     </th>
                                     <th>
-                                        @Html.DisplayNameFor(model => model.alm_nombre)
+                                        @Html.DisplayNameFor(model => model.Alumno.alm_nombre)
                                     </th>
                                     <th>
-                                        @Html.DisplayNameFor(model => model.alm_edad)
+                                        @Html.DisplayNameFor(model => model.Alumno.alm_edad)
                                     </th>
                                     <th>
-                                        @Html.DisplayNameFor(model => model.alm_sexo)
+                                        @Html.DisplayNameFor(model => model.Alumno.alm_sexo)
                                     </th>
                                     <th>
-                                        @Html.DisplayNameFor(model => model.alm_id_grd)
+                                        @Html.DisplayNameFor(model => model.Grado.grd_nombre)
                                     </th>
                                     <th>
-                                        @Html.DisplayNameFor(model => model.alm_observacion)
+                                        @Html.DisplayNameFor(model => model.Alumno.alm_observacion)
                                     </th>
                                     <th></th>
                                 </tr>
@@ -58,26 +58,26 @@
                                 {
                                     <tr>
                                         <td>
-                                            @item.alm_codigo
+                                            @item.Alumno.alm_codigo
                                         </td>
                                         <td>
-                                            @item.alm_nombre
+                                            @item.Alumno.alm_nombre
                                         </td>
                                         <td>
-                                            @item.alm_edad
+                                            @item.Alumno.alm_edad
                                         </td>
                                         <td>
-                                            @item.alm_sexo
+                                            @item.Alumno.alm_sexo
                                         </td>
                                         <td>
-                                            @item.alm_id_grd
+                                            @item.Grado.grd_nombre
                                         </td>
                                         <td>
-                                            @item.alm_observacion
+                                            @item.Alumno.alm_observacion
                                         </td>
                                         <td>
-                                            <a class="btn btn-primary" asp-action="Edit" asp-route-id="@item.alm_id">Edit</a>
-                                            <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.alm_id">Delete</a>
+                                            <a class="btn btn-primary" asp-action="Edit" asp-route-id="@item.Alumno.alm_id">Edit</a>
+                                            <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Alumno.alm_id">Delete</a>
                                         </td>
                                     </tr>
                                 }
