@@ -58,16 +58,9 @@
                         </div>
                     </div>
                     <div class="form-group row">
-
-                        @*<div class="form-group">
-                                <label asp-for="alm_id_grd" class="control-label"></label>
-                                <input asp-for="alm_id_grd" class="form-control" />
-                                <span asp-validation-for="alm_id_grd" class="text-danger"></span>
-                            </div>*@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label asp-for="Alumno.alm_id_grd" class="control-label"></label>
-                                @*@Html.DropDownListFor(a => a.GradoSeleccionado, Model.ListaDeGrados, "Indica el grado en curso", new { @class = "form-control" })*@
                                 <select asp-for="Alumno.alm_id_grd" class="form-control" asp-items="@Model.ListaDeGrados"></select>
                                 <span asp-validation-for="Alumno.alm_id_grd" class="text-danger"></span>
                             </div>

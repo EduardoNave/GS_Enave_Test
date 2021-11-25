@@ -1,38 +1,60 @@
-﻿@model GS_Enave_Test.Models.mxg_materiasxgrado
+﻿@model GS_Enave_Test.Models.ListaMxG
 
 @{
-    ViewData["Title"] = "Nuevo registro";
+    ViewData["Title"] = "Asignar nueva materia a un grado";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <div class="container">
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h3>Nuevo registro</h3>
+        <h3>Nuevo alumno</h3>
         <a class="d-none d-sm-inline-block btn btn-sm btn-secondary shadow-sm" asp-action="Index">Regresar a la lista</a>
     </div>
     <div class="container-fluid">
         <div class="card shadow mb-4">
             <div class="card-body">
-                <div class="row">
-                    <div class="col-md-6">
-                        <form asp-action="Create">
+                <form asp-action="Create">
+                    <div class="form-group row">
+                        <div class="col-md-12">
                             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                            <div class="form-group">
-                                <label asp-for="mxg_id_grd" class="control-label"></label>
-                                <input asp-for="mxg_id_grd" class="form-control" />
-                                <span asp-validation-for="mxg_id_grd" class="text-danger"></span>
-                            </div>
-                            <div class="form-group">
-                                <label asp-for="mxg_id_mat" class="control-label"></label>
-                                <input asp-for="mxg_id_mat" class="form-control" />
-                                <span asp-validation-for="mxg_id_mat" class="text-danger"></span>
-                            </div>
-                            <div class="form-group">
-                                <input type="submit" value="Crear" class="btn btn-primary" />
-                            </div>
-                        </form>
+                        </div>
                     </div>
-                </div>
+                    <div class="form-group row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="Materiasxgrado.mxg_id_grd" class="control-label"></label>
+                                <select asp-for="Materiasxgrado.mxg_id_grd" class="form-control">
+                                    <option value=""></option>
+                                    @foreach (var grado in (IEnumerable<GS_Enave_Test.Models.grd_grado>)ViewBag.ListaGrados)
+                                    {
+                                        <option value="@grado.grd_id">@grado.grd_nombre</option>
+                                    }
+                                </select>
+                                <span asp-validation-for="Materiasxgrado.mxg_id_grd" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="Materiasxgrado.mxg_id_mat" class="control-label"></label>
+                                <select asp-for="Materiasxgrado.mxg_id_mat" class="form-control">
+                                    <option value=""></option>
+                                    @foreach (var materia in (IEnumerable<GS_Enave_Test.Models.mat_materia>)ViewBag.ListaMaterias)
+                                    {
+                                        <option value="@materia.mat_id">@materia.mat_nombre</option>
+                                    }
+                                </select>
+                                <span asp-validation-for="Materiasxgrado.mxg_id_mat" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <input type="submit" value="Crear nuevo" class="btn btn-primary" />
+                            </div>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

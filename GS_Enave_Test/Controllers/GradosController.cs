@@ -96,15 +96,9 @@ namespace GS_Enave_Test.Controllers
         //HTTP POST Edit
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult DeleteGrado(int? id)
+        public IActionResult Delete(grd_grado grd_Grado)
         {
-            //se obtiene el grado
-            var grado = _context.grd_grado.Find(id);
-
-            if (grado == null)
-                return NotFound();
-
-            _context.grd_grado.Remove(grado);
+            _context.grd_grado.Remove(grd_Grado);
             _context.SaveChanges();
 
             TempData["mensaje"] = "Grado eliminado correctamente";

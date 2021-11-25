@@ -1,4 +1,4 @@
-﻿@model GS_Enave_Test.Models.mxg_materiasxgrado
+﻿@model GS_Enave_Test.Models.ListaMxG
 
 @{
     ViewData["Title"] = "Editar";
@@ -14,27 +14,32 @@
     <div class="container-fluid">
         <div class="card shadow mb-4">
             <div class="card-body">
-                <div class="row">
-                    <div class="col-md-6">
-                        <form asp-action="Edit">
+                <form asp-action="Edit">
+                    <div class="row">
+                        <input type="hidden" asp-for="Materiasxgrado.mxg_id" />
+                        <div class="col-md-6">
                             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                            <input type="hidden" asp-for="mxg_id" />
                             <div class="form-group">
-                                <label asp-for="mxg_id_grd" class="control-label"></label>
-                                <input asp-for="mxg_id_grd" class="form-control" />
-                                <span asp-validation-for="mxg_id_grd" class="text-danger"></span>
+                                <label asp-for="Materiasxgrado.mxg_id_grd" class="control-label"></label>
+                                <select asp-for="Materiasxgrado.mxg_id_grd" class="form-control" asp-items="@Model.ListaDeGrados"></select>
+                                <span asp-validation-for="Materiasxgrado.mxg_id_grd" class="text-danger"></span>
                             </div>
+                        </div>
+                        <div class="col-md-6">
+
                             <div class="form-group">
-                                <label asp-for="mxg_id_mat" class="control-label"></label>
-                                <input asp-for="mxg_id_mat" class="form-control" />
-                                <span asp-validation-for="mxg_id_mat" class="text-danger"></span>
+                                <label asp-for="Materiasxgrado.mxg_id_mat" class="control-label"></label>
+                                <select asp-for="Materiasxgrado.mxg_id_mat" class="form-control" asp-items="@Model.ListaDeMaterias"></select>
+                                <span asp-validation-for="Materiasxgrado.mxg_id_mat" class="text-danger"></span>
                             </div>
+                        </div>
+                        <div class="col-md-4">
                             <div class="form-group">
                                 <input type="submit" value="Guardar" class="btn btn-primary" />
                             </div>
-                        </form>
+                        </div>
                     </div>
-                </div>
+                </form>
             </div>
         </div>
     </div>

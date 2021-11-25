@@ -122,30 +122,44 @@ namespace GS_Enave_Test.Controllers
             if (id == null || id == 0)
                 return NotFound();
 
-            //obtenemos el alumno
+            //obtenemos el Alumno
             var alumno = _context.alm_alumno.Find(id);
 
             if (alumno == null)
                 return NotFound();
 
-            return View(alumno);
+            var grado = _context.grd_grado.Find(alumno.alm_id_grd);
+
+            //List<grd_grado> lista_grados = _context.grd_grado.ToList();
+            //ViewBag.ListaGrados = lista_grados;
+
+            var grados = _context.grd_grado.ToList();
+            var lista_grados = new SelectList(grados.Select(item => new SelectListItem
+            {
+                Text = item.grd_nombre,
+                Value = item.grd_id.ToString()
+            }).ToList(), "Value", "Text");
+
+            var listAlumno = new ListadoAlumno()
+            {
+                Alumno = alumno,
+                Grado = grado,
+                GradoSeleccionado = grado.grd_id,
+                ListaDeGrados = lista_grados
+            };
+
+            return View(listAlumno);
         }
 
-        //HTTP POST Edit
+        //HTTP POST Delete
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult DeleteAlumno(int? id)
+        public IActionResult Delete(ListadoAlumno listadoAlumno)
         {
-            //se obtiene el Alumno
-            var alumno = _context.alm_alumno.Find(id);
-
-            if (alumno == null)
-                return NotFound();
-
-            _context.alm_alumno.Remove(alumno);
+            _context.alm_alumno.Remove(listadoAlumno.Alumno);
             _context.SaveChanges();
 
-            TempData["mensaje"] = "Alumno eliminado correctamente";
+            TempData["mensaje"] = "Alumno elimnado correctamente";
             return RedirectToAction("Index");
         }
     }

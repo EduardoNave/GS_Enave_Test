@@ -10,7 +10,13 @@ namespace GS_Enave_Test.Models
     {
         [Key]
         public int mxg_id { get; set; }
+        
+        [Required(ErrorMessage = "Seleccione el grado de la materia")]
+        [Display(Name = "Grado")]
         public int mxg_id_grd { get; set; }
+
+        [Required(ErrorMessage = "Seleccione la materia a agregar")]
+        [Display(Name = "Materia")]
         public int mxg_id_mat { get; set; }
     }
 }

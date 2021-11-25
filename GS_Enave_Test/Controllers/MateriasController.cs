@@ -96,15 +96,9 @@ namespace GS_Enave_Test.Controllers
         //HTTP POST Edit
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult DeleteMateria(int? id)
+        public IActionResult Delete(mat_materia alm_Materia)
         {
-            //se obtiene el Materia
-            var materia = _context.mat_materia.Find(id);
-
-            if (materia == null)
-                return NotFound();
-
-            _context.mat_materia.Remove(materia);
+            _context.mat_materia.Remove(alm_Materia);
             _context.SaveChanges();
 
             TempData["mensaje"] = "Materia eliminada correctamente";
